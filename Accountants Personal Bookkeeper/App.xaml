@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Accountants_Personal_Bookkeeper.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper"
+    RequestedTheme="Light">
+
+</Application>

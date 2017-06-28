@@ -1,0 +1,102 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Chart="using:Telerik.UI.Xaml.Controls.Chart"
+    x:Class="Accountants_Personal_Bookkeeper.MainPage"
+    xmlns:data ="using:Accountants_Personal_Bookkeeper.Model" 
+    mc:Ignorable="d">
+
+    <Grid Background="DarkSlateGray">
+            <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Button Name="HamburgerButton" 
+                    RelativePanel.AlignLeftWithPanel="True" 
+                    FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xE700;" 
+                    FontSize="20" 
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Click="HamburgerButton_Click" />
+
+            <TextBlock Name="TitleTextBlock" 
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       FontSize="25"
+                       FontStretch="SemiCondensed"
+                       Foreground="White"
+                       Margin="5, 0, 0, 0"
+                       Text="Home"/>
+        </RelativePanel>
+        
+        <SplitView Name="MySplitView" 
+                   Grid.Row="1" 
+                   DisplayMode="Overlay" 
+                   OpenPaneLength="200" 
+                   CompactPaneLength="40" 
+                   HorizontalAlignment="Left">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="AUTO" />
+                    </Grid.RowDefinitions>
+                    <ListBox SelectionMode="Single" 
+                             Name="MenuListBox" 
+                             SelectionChanged="MenuListBox_SelectionChanged">
+                        <ListBoxItem Name="HomeListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE10F;" />
+                                <TextBlock Text="Home" FontSize="16" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="ChartListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE8FD;" />
+                                <TextBlock Text="Accounts" FontSize="15" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="JournalsListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE70B;" />
+                                <TextBlock Text="Journals" FontSize="16" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="LedgersListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE728;" />
+                                <TextBlock Text="Ledgers" FontSize="16" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="PartyListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE187;" />
+                                <TextBlock Text="Party" FontSize="16" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <ListBox SelectionMode="Single" 
+                             Name="SettingsListBox"
+                             Grid.Row="2"
+                             SelectionChanged="SettingsListBox_SelectionChanged">
+                        <ListBoxItem Name="SettingsListBoxItem" VerticalAlignment="Bottom">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE713;" />
+                                <TextBlock Text="Settings" FontSize="16" Margin="10,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame Name="MyFrame" />
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
