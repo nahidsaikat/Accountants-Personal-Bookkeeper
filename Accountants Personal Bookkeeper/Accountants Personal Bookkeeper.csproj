@@ -100,6 +100,8 @@
     <Compile Include="Model\AccountSubtype.cs" />
     <Compile Include="Model\Journal.cs" />
     <Compile Include="Model\JournalType.cs" />
+    <Compile Include="Model\Ledger.cs" />
+    <Compile Include="Model\NumberGenerator.cs" />
     <Compile Include="Model\Party.cs" />
     <Compile Include="Model\PartySubtype.cs" />
     <Compile Include="ViewModel\AccountSubtypeViewModel.cs" />
@@ -315,6 +317,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="SQLite.Net-PCL">
       <Version>3.1.1</Version>

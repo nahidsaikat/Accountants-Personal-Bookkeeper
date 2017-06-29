@@ -7,18 +7,17 @@ using SQLite.Net.Attributes;
 
 namespace Accountants_Personal_Bookkeeper.Model
 {
-    class Journal
+    class Ledger
     {
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
-        public string number { get; set; }
-        public DateTime journal_date { get; set; }
+        public int journal_id { get; set; }
+        public int account_id { get; set; }
         public double amount { get; set; }
-        public int type { get; set; }
         public int party_id { get; set; }
-        public int ref_journal_id { get; set; }
+        public DateTime entry_date { get; set; }
         public string description { get; set; }
-        public string account_info { get; set; }
+        public string other_accounts { get; set; }
         public int deleted { get; set; }
     }
 }

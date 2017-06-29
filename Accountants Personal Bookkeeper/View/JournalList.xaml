@@ -5,9 +5,51 @@
     xmlns:local="using:Accountants_Personal_Bookkeeper.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Accountants_Personal_Bookkeeper.Model"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="FontWeight" Value="Thin" />
+            <Setter Property="FontStretch" Value="Condensed" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+        </Style>
+    </Page.Resources>
+
     <Grid Background="DarkKhaki">
-        <TextBlock Text="Journal List" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto"
+                      Grid.Row="1">
+            <ListView Name="JournalListView"
+                      ItemsSource="{x:Bind journals}"
+                      Margin="10,20,10,0"
+                      SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Journal">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind number}" Style="{StaticResource TextBlockStyle}"/>
+                            <Button Name="ViewJournalButton"
+                                    Content="View"
+                                    Tag="{x:Bind id}"
+                                    Click="ViewJournalButton_Click"
+                                    Margin="10,0,0,0"
+                                    Foreground="WhiteSmoke"/>
+                            <Button x:Name="EditJournalButton" 
+                                    Content="Edit" 
+                                    Tag="{x:Bind id}"
+                                    Click="EditJournalButton_Click" 
+                                    Margin="5,0,0,0" 
+                                    Foreground="WhiteSmoke"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>
