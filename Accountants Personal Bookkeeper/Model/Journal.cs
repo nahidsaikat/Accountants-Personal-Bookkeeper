@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Accountants_Personal_Bookkeeper.Model
 {
-    class JournalSubtype
+    class Journal
     {
-
     }
 }

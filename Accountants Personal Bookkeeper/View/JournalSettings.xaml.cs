@@ -25,8 +25,14 @@ namespace Accountants_Personal_Bookkeeper.View
         public JournalSettings()
         {
             this.InitializeComponent();
-            JournalSubtypeListFrame.Navigate(typeof(JournalSubtypeList));
-            JournalSubtypeAddFrame.Navigate(typeof(JournalSubtypeAdd));
+            JournalTypeListFrame.Navigate(typeof(JournalTypeList));
+            JournalTypeAddFrame.Navigate(typeof(JournalTypeAdd));
+        }
+
+        private void JournalSettingsPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            JournalTypeListFrame.Navigate(typeof(JournalTypeList));
+            JournalTypeAddFrame.Navigate(typeof(JournalTypeAdd));
         }
     }
 }

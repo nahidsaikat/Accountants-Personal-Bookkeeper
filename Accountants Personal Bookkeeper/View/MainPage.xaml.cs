@@ -21,8 +21,6 @@ namespace Accountants_Personal_Bookkeeper
 {
     public sealed partial class MainPage: Page
     {
-        
-        MainPageViewModel viewmodel;
         SQLite.Net.SQLiteConnection conn;
 
         public MainPage()
@@ -30,8 +28,7 @@ namespace Accountants_Personal_Bookkeeper
             this.InitializeComponent();
             MyFrame.Navigate(typeof(HomeFrame));
             HomeListBoxItem.IsSelected = true;
-
-            viewmodel = new MainPageViewModel();
+            
             conn = new Connection().GetConnection();
         }
 

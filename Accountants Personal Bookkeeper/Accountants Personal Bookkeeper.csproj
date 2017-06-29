@@ -98,12 +98,14 @@
     <Compile Include="DB\Connection.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AccountSubtype.cs" />
-    <Compile Include="Model\JournalSubtype.cs" />
+    <Compile Include="Model\Journal.cs" />
+    <Compile Include="Model\JournalType.cs" />
     <Compile Include="Model\Party.cs" />
     <Compile Include="Model\PartySubtype.cs" />
     <Compile Include="ViewModel\AccountSubtypeViewModel.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
-    <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\JournalTypeViewModel.cs" />
+    <Compile Include="ViewModel\JournalViewModel.cs" />
     <Compile Include="ViewModel\PartySubtypeViewModel.cs" />
     <Compile Include="ViewModel\PartyViewModel.cs" />
     <Compile Include="View\AccountAdd.xaml.cs">
@@ -142,11 +144,11 @@
     <Compile Include="View\JournalSettings.xaml.cs">
       <DependentUpon>JournalSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\JournalSubtypeAdd.xaml.cs">
-      <DependentUpon>JournalSubtypeAdd.xaml</DependentUpon>
+    <Compile Include="View\JournalTypeAdd.xaml.cs">
+      <DependentUpon>JournalTypeAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\JournalSubtypeList.xaml.cs">
-      <DependentUpon>JournalSubtypeList.xaml</DependentUpon>
+    <Compile Include="View\JournalTypeList.xaml.cs">
+      <DependentUpon>JournalTypeList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LedgerAccount.xaml.cs">
       <DependentUpon>LedgerAccount.xaml</DependentUpon>
@@ -254,11 +256,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\JournalSubtypeAdd.xaml">
+    <Page Include="View\JournalTypeAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\JournalSubtypeList.xaml">
+    <Page Include="View\JournalTypeList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="Accountants_Personal_Bookkeeper.View.JournalTypeAdd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="AntiqueWhite">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="AUTO" />
+            <ColumnDefinition Width="AUTO" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Name="WarningTextBlock" Text="" FontSize="15" Grid.Column="2" Foreground="Red"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Name" Margin="0,20,10,0" FontSize="20" VerticalAlignment="Top" />
+        <TextBox Grid.Column="2" Grid.Row="1" Width="200" Margin="0,20,0,0" Name="NameTextBox" />
+
+        <TextBlock Grid.Column="1"  Grid.Row="2" Text="Prefix" Margin="0,5,10,0" FontSize="20" VerticalAlignment="Top" />
+        <TextBox Grid.Column="2" Grid.Row="2" Width="200" Margin="0,5,0,0" Name="PrefixTextBox" />
+
+        <TextBlock Grid.Column="1"  Grid.Row="3" Text="Start No" Margin="0,5,10,0" FontSize="20" VerticalAlignment="Top" />
+        <TextBox Grid.Column="2" Grid.Row="3" Width="200" Margin="0,5,0,0" Name="StartNumberTextBox" />
+
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="Debit" Margin="0,5,10,0" FontSize="20" VerticalAlignment="Top" />
+        <ComboBox Grid.Column="2" Grid.Row="4" Name="DebitComboBox" Width="200" Margin="0,5,0,0" />
+
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Credit" Margin="0,5,10,0" FontSize="20" VerticalAlignment="Top" />
+        <ComboBox Grid.Column="2" Grid.Row="5" Name="CreditComboBox" Width="200" Margin="0,5,0,0" />
+
+        <Button Name="JournalTypeSaveButton" Grid.Column="2" Grid.Row="6" 
+                Margin="0,10,0,0" Content="Save"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Stretch" 
+                Background="#FF615C5C"
+                Foreground="#FFFBF2E1" 
+                BorderBrush="Gray" 
+                BorderThickness="2,2,2,2"
+                Click="JournalTypeSaveButton_Click"
+                />
+    </Grid>
+</Page>
