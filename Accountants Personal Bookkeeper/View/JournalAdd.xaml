@@ -7,7 +7,70 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="DarkKhaki">
-        <TextBlock Text="Journal Add" />
-    </Grid>
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,5,10,0" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <Grid Background="DarkKhaki">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="AUTO" />
+                    <ColumnDefinition Width="AUTO" />
+                    <ColumnDefinition Width="AUTO" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Name="WarningTextBlock" Text="" FontSize="15" Grid.Column="2" Foreground="Red"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="Date" Margin="0,20,10,0" Style="{StaticResource TextBlockStyle}" />
+                <CalendarDatePicker x:Name="JournalDateCalendarDatePicker" Margin="0,5,0,0" 
+                            Grid.Column="2" Grid.Row="1" PlaceholderText="Enter Journal date"
+                            DateFormat="{}{year.full}-{month.integer}-{day.integer}"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="Type" Style="{StaticResource TextBlockStyle}" />
+                <ComboBox Grid.Column="2" Grid.Row="2" Width="200" Margin="0,5,0,0" Name="TypeComboBox" />
+
+                <TextBlock Grid.Column="1" Grid.Row="3" Text="Party" Style="{StaticResource TextBlockStyle}" />
+                <ComboBox Grid.Column="2" Grid.Row="3" Width="200" Name="PartyComboBox" Margin="0,5,0,0" />
+
+                <TextBlock Grid.Column="1" Grid.Row="4" Text="Ref. Journal" Style="{StaticResource TextBlockStyle}" />
+                <ComboBox Grid.Column="2" Grid.Row="4" Name="ReferenceComboBox" Width="200" Margin="0,5,0,0" />
+
+                <TextBlock Grid.Column="1" Grid.Row="5" Text="Note" Style="{StaticResource TextBlockStyle}" />
+                <TextBox Grid.Column="2" Grid.Row="5" Width="200" Height="100" TextWrapping="Wrap" Margin="0,5,0,0" Name="DescriptionTextBox" />
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Account Information" Margin="15,5,10,0" Style="{StaticResource TextBlockStyle}" />
+
+                <ListView Grid.Row="1" Name="AccountInfoGridView" Margin="0,5,0,0" />
+
+                <Button Name="JournalSaveButton" Grid.Row="2" Margin="0,10,0,0" Width="100" 
+                        Content="Save" HorizontalAlignment="Center" Click="JournalSaveButton_Click" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
