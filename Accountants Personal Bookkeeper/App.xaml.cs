@@ -20,6 +20,7 @@ namespace Accountants_Personal_Bookkeeper
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
+    /// 
     sealed partial class App : Application
     {
         /// <summary>

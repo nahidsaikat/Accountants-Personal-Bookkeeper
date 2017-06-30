@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="Accountants_Personal_Bookkeeper.View.RateUs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="DarkKhaki">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="AUTO" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="RateUsTextBlock"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Text="Tap here to rate us"
+                   FontSize="25"
+                   FontWeight="Thin"
+                   HorizontalAlignment="Center"
+                   />
+
+        <Button Name="RateUsButton" 
+                Grid.Column="1" 
+                Grid.Row="2" 
+                Height="250" 
+                Width="250" 
+                Background="DarkKhaki"
+                Foreground="LightYellow"
+                FontFamily="Segoe MDL2 Assets" 
+                FontSize="200" 
+                Content="&#xE76E;"
+                Click="RateUsButton_Click" />
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Text=" "
+                   Height="130"
+                   />
+    </Grid>
+</Page>

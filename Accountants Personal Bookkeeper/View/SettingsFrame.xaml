@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Accountants_Personal_Bookkeeper.View.SettingsFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid  Background="DarkKhaki">
+        <Pivot x:Name="SettingsPivot" SelectionChanged="SettingsPivot_SelectionChanged">
+            <PivotItem Header="App Settings" Name="AppSettingsPivotItem">
+                <Frame Name="AppSettingsFrame" />
+            </PivotItem>
+            <PivotItem Header="About" Name="AboutPivotItem">
+                <Frame Name="AboutFrame" />
+            </PivotItem>
+            <PivotItem Header="Rate Us" Name="RateUsPivotItem">
+                <Frame Name="RateUsFrame" />
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

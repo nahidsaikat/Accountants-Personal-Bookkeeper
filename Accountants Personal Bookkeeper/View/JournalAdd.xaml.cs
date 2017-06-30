@@ -28,6 +28,7 @@ namespace Accountants_Personal_Bookkeeper.View
         AccountViewModel accountVM;
         PartyViewModel partyVM;
         JournalTypeViewModel typeVM;
+        SettingsViewModel settings;
 
         public JournalAdd()
         {
@@ -38,6 +39,7 @@ namespace Accountants_Personal_Bookkeeper.View
             accountVM = new AccountViewModel();
             partyVM = new PartyViewModel();
             typeVM = new JournalTypeViewModel();
+            settings = new SettingsViewModel();
 
             LoadPage();
 
@@ -104,7 +106,10 @@ namespace Accountants_Personal_Bookkeeper.View
 
         private void LoadAccountGrid()
         {
-            for (int counter=0; counter < 4; counter++)
+            Windows.Storage.ApplicationDataCompositeValue composite = settings.GetSettingsComposite();
+            int length = int.Parse(composite["NumberOfAccountInJournal"].ToString());
+
+            for (int counter=0; counter<length; counter++)
             {
                 StackPanel stackpanel = new StackPanel();
                 stackpanel.Name = "StackPanel" + counter.ToString();
@@ -167,7 +172,10 @@ namespace Accountants_Personal_Bookkeeper.View
             // Get ledger data
             Dictionary<int, double> accountInfo = new Dictionary<int, double>();
             double totalDebit = 0.0, totalCredit = 0.0;
-            for(int i=0; i<4; i++)
+            Windows.Storage.ApplicationDataCompositeValue composite = settings.GetSettingsComposite();
+            int length = int.Parse(composite["NumberOfAccountInJournal"].ToString());
+
+            for (int i=0; i<length; i++)
             {
                 ComboBox AccountComboBox = (this.AccountInfoStackPanel.Children[i] as StackPanel).Children[0] as ComboBox;
                 TextBox DebitTextBox = (this.AccountInfoStackPanel.Children[i] as StackPanel).Children[1] as TextBox;

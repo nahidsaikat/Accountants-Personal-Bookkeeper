@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Accountants_Personal_Bookkeeper.View.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Accountants_Personal_Bookkeeper.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+        <Grid Background="DarkKhaki">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="AUTO" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <TextBlock />
+                <TextBlock TextWrapping="Wrap" Text="This is an Universal Windows Platform app."/>
+
+                <TextBlock />
+                <TextBlock TextWrapping="Wrap" Text="To use this app you have to know the"/>
+                <TextBlock TextWrapping="Wrap" Text="fundamentals of accounting."/>
+
+                <TextBlock />
+                <TextBlock TextWrapping="Wrap" FontSize="20" Text="Environmental Requirement:"/>
+                <TextBlock TextWrapping="Wrap" Text="Windows 10 Operating System with Anniversary"/>
+                <TextBlock TextWrapping="Wrap" Text="Update for Both PC and Mobile."/>
+
+                <TextBlock />
+                <TextBlock TextWrapping="Wrap" FontSize="25" Text="Features :"/>
+                <TextBlock TextWrapping="Wrap" Text="  01.    Graphical home page,"/>
+                <TextBlock TextWrapping="Wrap" Text="  02.    Chart of accounts,"/>
+                <TextBlock TextWrapping="Wrap" Text="  03.    Account subtype,"/>
+                <TextBlock TextWrapping="Wrap" Text="  04.    Journal subtype,"/>
+                <TextBlock TextWrapping="Wrap" Text="  05.    Journal entry,"/>
+                <TextBlock TextWrapping="Wrap" Text="  06.    Journal book,"/>
+                <TextBlock TextWrapping="Wrap" Text="  07.    Ledger book,"/>
+                <TextBlock TextWrapping="Wrap" Text="  08.    Party subtype,"/>
+                <TextBlock TextWrapping="Wrap" Text="  09.    Party list,"/>
+                <TextBlock TextWrapping="Wrap" Text="  10.   Party ledger,"/>
+                <TextBlock TextWrapping="Wrap" Text="  11.   Monthly statements,"/>
+                <TextBlock TextWrapping="Wrap" Text="  12.   Graphical reports."/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

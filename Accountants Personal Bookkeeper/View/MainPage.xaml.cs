@@ -76,7 +76,7 @@ namespace Accountants_Personal_Bookkeeper
         {
             if (SettingsListBoxItem.IsSelected)
             {
-                MyFrame.Navigate(typeof(Settings));
+                MyFrame.Navigate(typeof(SettingsFrame));
                 TitleTextBlock.Text = "Settings";
                 HomeListBoxItem.IsSelected = false;
                 ChartListBoxItem.IsSelected = false;

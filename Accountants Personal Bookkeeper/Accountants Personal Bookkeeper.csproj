@@ -111,6 +111,10 @@
     <Compile Include="ViewModel\JournalViewModel.cs" />
     <Compile Include="ViewModel\PartySubtypeViewModel.cs" />
     <Compile Include="ViewModel\PartyViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="View\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AccountAdd.xaml.cs">
       <DependentUpon>AccountAdd.xaml</DependentUpon>
     </Compile>
@@ -184,8 +188,14 @@
     <Compile Include="View\PartySubtypeList.xaml.cs">
       <DependentUpon>PartySubtypeList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RateUs.xaml.cs">
+      <DependentUpon>RateUs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsFrame.xaml.cs">
+      <DependentUpon>SettingsFrame.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AccountAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -307,7 +321,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\RateUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
