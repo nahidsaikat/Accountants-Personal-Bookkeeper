@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UniversalRateReminder;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -72,6 +73,14 @@ namespace Accountants_Personal_Bookkeeper
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+            RatePopup.LaunchLimit = 20;
+            RatePopup.ResetCountOnNewVersion = false;
+            RatePopup.RateButtonText = "rate now";
+            RatePopup.CancelButtonText = "not now";
+            RatePopup.Title = "Rate App";
+            RatePopup.Content = "Would you like to rate this app?";
+            RatePopup.CheckRateReminderAsync();
+            RatePopup.ResetLaunchCount();
         }
 
         /// <summary>

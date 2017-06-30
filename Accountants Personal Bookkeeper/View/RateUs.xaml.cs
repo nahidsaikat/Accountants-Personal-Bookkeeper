@@ -28,11 +28,12 @@ namespace Accountants_Personal_Bookkeeper.View
         private async void RateUsButton_Click(object sender, RoutedEventArgs e)
         {
             MessageDialog RateDialog = new MessageDialog("Would you like to rate this app?");
-            RateDialog.Commands.Add(new UICommand("Rate now", async (command) =>
+            RateDialog.Commands.Add(new UICommand("rate now", async (command) =>
             {
                 await Launcher.LaunchUriAsync( new Uri($"ms-windows-store://review/?PFN={Package.Current.Id.FamilyName}") );
             }));
-            RateDialog.Commands.Add(new UICommand("Not now"));
+            RateDialog.Title = "Rate App";
+            RateDialog.Commands.Add(new UICommand("not now"));
             RateDialog.DefaultCommandIndex = 0;
             RateDialog.CancelCommandIndex = 1;
             await RateDialog.ShowAsync();
