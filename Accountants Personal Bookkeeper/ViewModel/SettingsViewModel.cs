@@ -20,6 +20,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             {
                 composite = new Windows.Storage.ApplicationDataCompositeValue();
                 composite["NumberOfAccountInJournal"] = "2";
+                composite["AccountReceivableId"] = "-1";
                 localSettings.Values["SettingComposite"] = composite;
             }
             return composite;

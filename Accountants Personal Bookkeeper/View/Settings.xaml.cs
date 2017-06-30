@@ -22,28 +22,56 @@ namespace Accountants_Personal_Bookkeeper.View
 {
     public sealed partial class Settings : Page
     {
+        Windows.Storage.ApplicationDataCompositeValue composite;
         SettingsViewModel settings;
+        AccountViewModel accountVM;
+
         public Settings()
         {
             this.InitializeComponent();
             settings = new SettingsViewModel();
+            composite = settings.GetSettingsComposite();
+            accountVM = new AccountViewModel();
 
             PageLoad();
         }
 
         private void PageLoad()
         {
-            Windows.Storage.ApplicationDataCompositeValue composite = settings.GetSettingsComposite();
             NumberOfAccountInJournalTextBox.Text = composite["NumberOfAccountInJournal"].ToString();
+            LoadAccountReceivableIdCombo();
+        }
+
+        private void LoadAccountReceivableIdCombo()
+        {
+            foreach (var account in accountVM.AccountList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Name = account.id.ToString();
+                item.Content = account.name.ToString();
+                if (composite["AccountReceivableId"].ToString() != "-1")
+                {
+                    item.IsSelected = true;
+                }
+                AccountReceivableIdComboBox.Items.Add(item);
+            }
         }
 
         private void SettingsSaveButton_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, string> settingData = new Dictionary<string, string>();
+
             string numberOfAccount = NumberOfAccountInJournalTextBox.Text;
             settingData.Add("NumberOfAccountInJournal", numberOfAccount);
-            bool success = settings.SaveSettingsComposite(settingData);
 
+            string accountReceivableId = "-1";
+            if (AccountReceivableIdComboBox.SelectedValue != null)
+            {
+                accountReceivableId = (AccountReceivableIdComboBox.SelectedValue as ComboBoxItem).Name.ToString();
+            }
+            settingData.Add("AccountReceivableId", accountReceivableId);
+
+            bool success = settings.SaveSettingsComposite(settingData);
             if (success)
             {
                 WarningTextBlock.Visibility = Visibility.Visible;
