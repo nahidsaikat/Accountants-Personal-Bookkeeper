@@ -31,7 +31,7 @@ namespace Accountants_Personal_Bookkeeper.View
             conn = new Connection().GetConnection();
 
             PartyListFrame.Navigate(typeof(PartyList));
-            PartyLedgerFrame.Navigate(typeof(PartyLedger));
+            PartyLedgerFrame.Navigate(typeof(LedgerParty));
             PartyAddFrame.Navigate(typeof(PartyAdd));
             PartySettingsFrame.Navigate(typeof(PartySettings));
         }

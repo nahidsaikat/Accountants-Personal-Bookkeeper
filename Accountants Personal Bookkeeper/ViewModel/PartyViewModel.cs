@@ -102,5 +102,22 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             PartySubtypeViewModel subtypevM = new PartySubtypeViewModel();
             return subtypevM.Get(subtype_id);
         }
+
+        public List<PartyLedger> PartyLedgerList()
+        {
+            List<PartyLedger> ledgers = new List<PartyLedger>();
+            int counter = 0;
+            foreach (Party party in PartyList())
+            {
+                ledgers.Add(new PartyLedger()
+                {
+                    id = ++counter,
+                    party_id = party.id,
+                    party_name = party.name,
+                    balance = accountVM.GetBalance(party.account_id)
+                });
+            }
+            return ledgers;
+        }
     }
 }

@@ -120,7 +120,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             return ledgers;
         }
 
-        private double GetBalance(int account_id)
+        public double GetBalance(int account_id)
         {
             List<Ledger> allLedgers = (from ledger in conn.Table<Ledger>()
                                          where ledger.account_id == account_id

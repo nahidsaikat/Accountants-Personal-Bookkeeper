@@ -104,6 +104,7 @@
     <Compile Include="Model\Ledger.cs" />
     <Compile Include="Model\NumberGenerator.cs" />
     <Compile Include="Model\Party.cs" />
+    <Compile Include="Model\PartyLedger.cs" />
     <Compile Include="Model\PartySubtype.cs" />
     <Compile Include="ViewModel\AccountSubtypeViewModel.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
@@ -160,6 +161,9 @@
     <Compile Include="View\LedgerFrame.xaml.cs">
       <DependentUpon>LedgerFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LedgerParty.xaml.cs">
+      <DependentUpon>LedgerParty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -169,9 +173,6 @@
     </Compile>
     <Compile Include="View\PartyFrame.xaml.cs">
       <DependentUpon>PartyFrame.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PartyLedger.xaml.cs">
-      <DependentUpon>PartyLedger.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PartyList.xaml.cs">
       <DependentUpon>PartyList.xaml</DependentUpon>
@@ -282,6 +283,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\LedgerParty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -291,10 +296,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PartyFrame.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PartyLedger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
