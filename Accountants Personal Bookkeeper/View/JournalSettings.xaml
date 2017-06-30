@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid  Background="DarkKhaki">
-        <Pivot x:Name="JournalSettingsPivot" Margin="0,0,0,25" SelectionChanged="JournalSettingsPivot_SelectionChanged">
+        <Pivot x:Name="JournalSettingsPivot" Margin="0,0,0,0" SelectionChanged="JournalSettingsPivot_SelectionChanged">
             <PivotItem Header="Subtypes" Name="SubtypesPivotItem">
                 <Frame Name="JournalTypeListFrame" />
             </PivotItem>

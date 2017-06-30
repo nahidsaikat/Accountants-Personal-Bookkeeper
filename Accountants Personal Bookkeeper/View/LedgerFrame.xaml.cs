@@ -12,19 +12,20 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
+using Accountants_Personal_Bookkeeper.DB;
+using Accountants_Personal_Bookkeeper.Model;
+using Accountants_Personal_Bookkeeper.ViewModel;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Accountants_Personal_Bookkeeper.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class LedgerFrame : Page
     {
         public LedgerFrame()
         {
             this.InitializeComponent();
+            LedgerBookFrame.Navigate(typeof(LedgerAccount));
         }
     }
 }

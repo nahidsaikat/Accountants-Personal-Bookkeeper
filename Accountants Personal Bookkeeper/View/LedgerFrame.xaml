@@ -5,9 +5,14 @@
     xmlns:local="using:Accountants_Personal_Bookkeeper.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Accountants_Personal_Bookkeeper.Model"
     mc:Ignorable="d">
 
     <Grid Background="DarkKhaki">
-        <TextBlock Text="Ledgers" />
+        <Pivot x:Name="LedgerPivot">
+            <PivotItem Header="Ledger Book">
+                <Frame Name="LedgerBookFrame" />
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>

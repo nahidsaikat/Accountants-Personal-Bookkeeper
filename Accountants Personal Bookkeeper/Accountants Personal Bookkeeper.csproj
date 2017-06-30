@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="DB\Connection.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AccountLedger.cs" />
     <Compile Include="Model\AccountSubtype.cs" />
     <Compile Include="Model\Journal.cs" />
     <Compile Include="Model\JournalType.cs" />

@@ -75,5 +75,32 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             AccountSubtypeViewModel subtypevM = new AccountSubtypeViewModel();
             return subtypevM.Get(subtype_id);
         }
+
+        public List<AccountLedger> AccountLedgerList()
+        {
+            List<AccountLedger> ledgers = new List<AccountLedger>();
+            int counter = 0;
+            foreach(Account account in AccountList())
+            {
+                ledgers.Add(new AccountLedger()
+                {
+                    id = ++counter,
+                    account_id = account.id,
+                    account_name = account.name,
+                    balance = GetBalance(account.id)
+                });
+            }
+            return ledgers;
+        }
+
+        private double GetBalance(int account_id)
+        {
+            List<Ledger> allLedgers = (from ledger in conn.Table<Ledger>()
+                                         where ledger.account_id == account_id
+                                         select ledger
+                                         ).ToList<Ledger>();
+            double balance = allLedgers.Sum(ledger => ledger.amount);
+            return balance;
+        }
     }
 }

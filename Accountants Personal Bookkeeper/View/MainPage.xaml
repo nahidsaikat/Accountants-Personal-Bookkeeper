@@ -26,7 +26,7 @@
 
             <TextBlock Name="TitleTextBlock" 
                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       FontSize="25"
+                       FontSize="20"
                        FontStretch="SemiCondensed"
                        Foreground="White"
                        Margin="5, 0, 0, 0"
@@ -95,7 +95,9 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame Name="MyFrame" />
+                <Grid>
+                    <Frame Name="MyFrame" />
+                </Grid>
             </SplitView.Content>
         </SplitView>
     </Grid>

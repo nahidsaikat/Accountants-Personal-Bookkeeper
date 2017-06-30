@@ -5,9 +5,42 @@
     xmlns:local="using:Accountants_Personal_Bookkeeper.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Accountants_Personal_Bookkeeper.Model"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="FontWeight" Value="Thin" />
+            <Setter Property="FontStretch" Value="Condensed" />
+            <Setter Property="Margin" Value="5,0,0,0" />
+        </Style>
+    </Page.Resources>
+
     <Grid Background="DarkKhaki">
-        <TextBlock Text="Account Ledgers"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto"
+                      Grid.Row="1">
+            <ListView Name="AccountLedgerListView"
+                      ItemsSource="{x:Bind ledgers}"
+                      Margin="10,20,10,0"
+                      SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:AccountLedger">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind id}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind account_name}" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="#" Style="{StaticResource TextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind balance}" Style="{StaticResource TextBlockStyle}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>
