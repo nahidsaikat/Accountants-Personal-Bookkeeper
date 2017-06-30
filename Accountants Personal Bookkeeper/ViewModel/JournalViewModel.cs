@@ -151,7 +151,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             foreach(KeyValuePair<int, double> pair in accountData)
             {
                 Account account = accountVM.Get(pair.Key);
-                names += account.name + " : " + pair.Value.ToString() + "\n ";
+                names += account.name + " : " + pair.Value.ToString() + "\n";
             }
             return names.Trim();
         }

@@ -23,7 +23,8 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1">
                 <TextBlock />
-                <TextBlock TextWrapping="Wrap" Text="This is an Universal Windows Platform app."/>
+                <TextBlock TextWrapping="Wrap" FontSize="25" Text="This is an Universal Windows"/>
+                <TextBlock TextWrapping="Wrap" FontSize="25" Text="Platform application."/>
 
                 <TextBlock />
                 <TextBlock TextWrapping="Wrap" Text="To use this app you have to know the"/>
