@@ -40,6 +40,7 @@ namespace Accountants_Personal_Bookkeeper.View
         {
             NumberOfAccountInJournalTextBox.Text = composite["NumberOfAccountInJournal"].ToString();
             LoadAccountReceivableIdCombo();
+            LoadIncomeAccountIdCombo();
         }
 
         private void LoadAccountReceivableIdCombo()
@@ -49,11 +50,28 @@ namespace Accountants_Personal_Bookkeeper.View
                 ComboBoxItem item = new ComboBoxItem();
                 item.Name = account.id.ToString();
                 item.Content = account.name.ToString();
-                if (composite["AccountReceivableId"].ToString() != "-1")
+                if (composite["AccountReceivableId"] != null && composite["AccountReceivableId"].ToString() != "-1"
+                    && composite["AccountReceivableId"].ToString() == account.id.ToString())
                 {
                     item.IsSelected = true;
                 }
                 AccountReceivableIdComboBox.Items.Add(item);
+            }
+        }
+
+        private void LoadIncomeAccountIdCombo()
+        {
+            foreach (var account in accountVM.AccountList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Name = account.id.ToString();
+                item.Content = account.name.ToString();
+                if (composite["IncomeAccountId"] != null && composite["IncomeAccountId"].ToString() != "-1"
+                    && composite["IncomeAccountId"].ToString() == account.id.ToString())
+                {
+                    item.IsSelected = true;
+                }
+                IncomeAccountIdComboBox.Items.Add(item);
             }
         }
 
@@ -70,6 +88,13 @@ namespace Accountants_Personal_Bookkeeper.View
                 accountReceivableId = (AccountReceivableIdComboBox.SelectedValue as ComboBoxItem).Name.ToString();
             }
             settingData.Add("AccountReceivableId", accountReceivableId);
+
+            string incomeAccountId = "-1";
+            if (IncomeAccountIdComboBox.SelectedValue != null)
+            {
+                incomeAccountId = (IncomeAccountIdComboBox.SelectedValue as ComboBoxItem).Name.ToString();
+            }
+            settingData.Add("IncomeAccountId", incomeAccountId);
 
             bool success = settings.SaveSettingsComposite(settingData);
             if (success)

@@ -13,40 +13,68 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
     class PartyViewModel
     {
         SQLite.Net.SQLiteConnection conn;
+        SettingsViewModel settings;
+        AccountViewModel accountVM;
 
         public PartyViewModel()
         {
             conn = new Connection().GetConnection();
             conn.CreateTable<Party>();
+            settings = new SettingsViewModel();
+            accountVM = new AccountViewModel();
         }
 
-        public bool Add(string name, string code, string subtypeString, string phone, string email,
+        public int Add(string name, string code, string subtypeString, string phone, string email,
              string address, string company_name, string entry_date, string opening_balance)
         {
-            bool success = false;
+            int add = -1;
             try
             {
-                int subtype = int.Parse(subtypeString);
-                var add = conn.Insert(new Party()
+                add = CreateAccount(name, code, entry_date, opening_balance);
+                if (add > 0)
                 {
-                    name = name,
-                    code = code,
-                    subtype_id = subtype,
-                    phone = phone,
-                    email = email,
-                    address = address,
-                    company_name = company_name,
-                    entry_date = DateTime.Parse(entry_date),
-                    opening_balance = Double.Parse(opening_balance),
-                    deleted = 0
-                });
-                success = true;
+                    int account_id = add;
+                    int subtype = int.Parse(subtypeString);
+                    Party party = new Party()
+                    {
+                        name = name,
+                        code = code,
+                        subtype_id = subtype,
+                        phone = phone,
+                        email = email,
+                        address = address,
+                        company_name = company_name,
+                        entry_date = DateTime.Parse(entry_date),
+                        opening_balance = Double.Parse(opening_balance),
+                        account_id = account_id,
+                        deleted = 0
+                    };
+                    conn.Insert(party);
+                    add = party.id;
+                }
+                else { add = -2; }
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                success = false;
+                add = -1;
             }
+            return add;
+        }
+
+        public int CreateAccount(string name, string code, string entry_date, string opening_balance)
+        {
+            Windows.Storage.ApplicationDataCompositeValue composite = settings.GetSettingsComposite();
+            int ar_id = int.Parse(composite["AccountReceivableId"].ToString());
+            
+            Account AR = accountVM.Get(ar_id);
+            string acc_name = "AR " + name, 
+                acc_code = AR.code + "." + code, 
+                note = "Account for " + name,
+                type = AR.type.ToString(),
+                subtype = AR.subtype.ToString(),
+                parent_id = ar_id.ToString();
+            int success = accountVM.Add(acc_name, acc_code, type, subtype, parent_id, opening_balance, entry_date, note);
             return success;
         }
 

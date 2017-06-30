@@ -14,21 +14,27 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
     class AccountViewModel
     {
         SQLite.Net.SQLiteConnection conn;
+        SettingsViewModel settings;
+        JournalTypeViewModel jtVM;
+        JournalViewModel journalVM;
 
         public AccountViewModel()
         {
             conn = new Connection().GetConnection();
             conn.CreateTable<Account>();
+            settings = new SettingsViewModel();
+            jtVM = new JournalTypeViewModel();
+            journalVM = new JournalViewModel();
         }
 
-        public bool Add(string name, string code, string typeString, string subtypeString,
+        public int Add(string name, string code, string typeString, string subtypeString,
             string parentString, string openingBalance, string openingDate, string note)
         {
-            bool success = false;
+            int add = -1;
             try
             {
                 int type = int.Parse(typeString),  subtype = int.Parse(subtypeString), parent_id = int.Parse(parentString);
-                var add = conn.Insert(new Account()
+                Account account = new Account()
                 {
                     name = name,
                     code = code,
@@ -40,15 +46,36 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                     note = note,
                     opening_balance = Double.Parse(openingBalance),
                     deleted = 0
-                });
-                success = true;
+                };
+                conn.Insert(account);
+                add = account.id;
+                if (Double.Parse(openingBalance) > 0.0)
+                {
+                    int flag = CreateJournal(account.id, openingDate, openingBalance, note);
+                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                success = false;
+                add = -1;
             }
-            return success;
+            return add;
+        }
+
+        private int CreateJournal(int account_id, string journalDate, string openingBalance, string note)
+        {
+            Windows.Storage.ApplicationDataCompositeValue composite = settings.GetSettingsComposite();
+            int income_id = int.Parse(composite["IncomeAccountId"].ToString());
+
+            JournalType journalType = jtVM.GetHavingPrefix("IOJ");
+            string typeString = journalType.id.ToString(), partyString = "-1", referenceString = "-1";
+            double amount = double.Parse(openingBalance);
+            Dictionary<int, double> accountInfo = new Dictionary<int, double>()
+            {
+                { account_id, amount },
+                { income_id, amount*-1 }
+            };
+            return journalVM.Add(journalDate, typeString, partyString, referenceString, note, accountInfo, amount, amount);
         }
 
         public List<Account> AccountList()

@@ -211,8 +211,8 @@ namespace Accountants_Personal_Bookkeeper.View
             else
             {
                 // Insert in database as it is not already in database
-                string message = viewModel.Add(journalDate, typeString, partyString, referenceString, note, accountInfo, totalDebit, totalCredit);
-                if (message == "Success")
+                int success = viewModel.Add(journalDate, typeString, partyString, referenceString, note, accountInfo, totalDebit, totalCredit);
+                if (success > 0)
                 {
                     DescriptionTextBox.Text = string.Empty;
                     JournalDateCalendarDatePicker.Date = null;
@@ -222,11 +222,22 @@ namespace Accountants_Personal_Bookkeeper.View
                     WarningTextBlock.Text = "Journal added successfully.";
                     WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Green);
                 }
+                else if (success == -2)
+                {
+                    WarningTextBlock.Visibility = Visibility.Visible;
+                    WarningTextBlock.Text = "Two Account Required!";
+                    WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                }
+                else if (success == -3)
+                {
+                    WarningTextBlock.Visibility = Visibility.Visible;
+                    WarningTextBlock.Text = "Debit Credit Mismatch!";
+                    WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                }
                 else
                 {
-                    // something went wrong.
                     WarningTextBlock.Visibility = Visibility.Visible;
-                    WarningTextBlock.Text = message;
+                    WarningTextBlock.Text = "Something went wrong!";
                     WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
                 }
             }

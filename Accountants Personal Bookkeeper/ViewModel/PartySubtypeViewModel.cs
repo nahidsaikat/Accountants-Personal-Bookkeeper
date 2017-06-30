@@ -19,25 +19,26 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             conn.CreateTable<PartySubtype>();
         }
 
-        public bool Add(string name, string code)
+        public int Add(string name, string code)
         {
-            bool success = false;
+            int add = -1;
             try
             {
-                var add = conn.Insert(new PartySubtype()
+                PartySubtype subtype = new PartySubtype()
                 {
                     name = name,
                     code = code,
                     deleted = 0
-                });
-                success = true;
+                };
+                conn.Insert(subtype);
+                add = subtype.id;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                success = false;
+                add = -1;
             }
-            return success;
+            return add;
         }
 
         public List<PartySubtype> PartySubtypeList()

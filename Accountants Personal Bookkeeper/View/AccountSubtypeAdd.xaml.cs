@@ -105,8 +105,8 @@ namespace Accountants_Personal_Bookkeeper.View
                 if (!same)
                 {
                     // Insert in database as it is not already in database
-                    bool flag = viewModel.Add(name, code, typeString);
-                    if (flag)
+                    int success = viewModel.Add(name, code, typeString);
+                    if (success > 0)
                     {
                         NameTextBox.Text = string.Empty;
                         CodeTextBox.Text = string.Empty;
@@ -119,7 +119,7 @@ namespace Accountants_Personal_Bookkeeper.View
                     {
                         // something went wrong.
                         WarningTextBlock.Visibility = Visibility.Visible;
-                        WarningTextBlock.Text = "Something went Wrong.";
+                        WarningTextBlock.Text = "Something went wrong!";
                         WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
                     }
                 }

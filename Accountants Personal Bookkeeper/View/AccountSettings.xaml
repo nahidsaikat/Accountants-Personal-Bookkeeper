@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid  Background="DarkKhaki">
-        <Pivot x:Name="AccountSettingsPivot" Margin="0,0,0,0" SelectionChanged="AccountSettingsPivot_SelectionChanged">
+        <Pivot x:Name="AccountSettingsPivot" Margin="0,0,0,15" SelectionChanged="AccountSettingsPivot_SelectionChanged">
             <PivotItem Header="Subtypes" Name="SubtypesPivotItem">
                 <Frame Name="AccountSubtypeListFrame" />
             </PivotItem>

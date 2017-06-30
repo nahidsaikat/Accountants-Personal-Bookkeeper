@@ -84,9 +84,9 @@ namespace Accountants_Personal_Bookkeeper.View
                 if (IsUnique(name, code))
                 {
                     // Insert in database as it is not already in database
-                    bool flag = viewModel.Add(name, code, subtypeString, phone, email, address, 
+                    int success = viewModel.Add(name, code, subtypeString, phone, email, address, 
                         company_name, entry_date, opening_balance);
-                    if (flag)
+                    if (success > 0)
                     {
                         NameTextBox.Text = string.Empty;
                         CodeTextBox.Text = string.Empty;
@@ -100,11 +100,16 @@ namespace Accountants_Personal_Bookkeeper.View
                         WarningTextBlock.Text = "Party added successfully.";
                         WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Green);
                     }
+                    else if (success == -2)
+                    {
+                        WarningTextBlock.Visibility = Visibility.Visible;
+                        WarningTextBlock.Text = "Account creation problem!";
+                        WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                    }
                     else
                     {
-                        // something went wrong.
                         WarningTextBlock.Visibility = Visibility.Visible;
-                        WarningTextBlock.Text = "Something went Wrong.";
+                        WarningTextBlock.Text = "Something went wrong!";
                         WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
                     }
                 }

@@ -23,26 +23,21 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             conn.CreateTable<Ledger>();
         }
 
-        public string Add(string journalDate, string typeString, string partyString, string referenceString, string note, 
+        public int Add(string journalDate, string typeString, string partyString, string referenceString, string note, 
             Dictionary<int, double> accountInfo, double totalDebit, double totalCredit)
         {
-            string message = "";
-            if (accountInfo.Count < 2) return "Two Account Required!";
-            if (totalDebit != totalCredit) return "Debit Credit Mismatch!";
+            int add = -1;
+            if (accountInfo.Count < 2) return -2;
+            if (totalDebit != totalCredit) return -3;
             try
             {
                 int type = int.Parse(typeString), party_id = int.Parse(partyString),
                     ref_journal_id = int.Parse(referenceString);
                 
                 string number = GetJournalNumber(type);
-                //string acc_info = "";
-                //foreach(KeyValuePair<int, double> pair in accountInfo)
-                //{
-                //    acc_info += pair.Key.ToString() + ":" + pair.Value.ToString() + " ";
-                //}
                 string json = JsonConvert.SerializeObject(accountInfo, Formatting.Indented).ToString()
                     .Replace("\r", "").Replace("\n", "").Replace(" ", "");
-                var add = conn.Insert(new Journal()
+                Journal journal = new Journal()
                 {
                     number = number,
                     journal_date = DateTime.Parse(journalDate),
@@ -53,14 +48,16 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                     description = note,
                     account_info = json.Trim(),
                     deleted = 0
-                });
-                if (add != -1)
+                };
+                conn.Insert(journal);
+                add = journal.id;
+                if (add > 0)
                 {
                     foreach(KeyValuePair<int, double> pair in accountInfo)
                     {
                         conn.Insert(new Ledger()
                         {
-                            journal_id = add,
+                            journal_id = journal.id,
                             account_id = pair.Key,
                             amount = pair.Value,
                             party_id = party_id,
@@ -70,14 +67,13 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                         });
                     }
                 }
-                message = "Success";
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                message = "Something went wrong!";
+                add = -1;
             }
-            return message;
+            return add;
         }
 
         private string GetJournalNumber(int type)

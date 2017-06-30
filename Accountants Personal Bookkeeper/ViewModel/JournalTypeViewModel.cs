@@ -17,17 +17,30 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
         {
             conn = new Connection().GetConnection();
             conn.CreateTable<JournalType>();
+            CreateInternalOpeningJournalType();
         }
 
-        public bool Add(string name, string prefix, string start_number,
+        private void CreateInternalOpeningJournalType()
+        {
+            bool already = (from sub in conn.Table<JournalType>()
+                                where sub.prefix == "IOJ"
+                                select sub
+                            ).Any<JournalType>();
+            if (!already)
+            {
+                Add("Internal Opening Journal", "IOJ", "1000", "-1", "-1");
+            }
+        }
+
+        public int Add(string name, string prefix, string start_number,
             string debit_account_id_str, string credit_account_id_str)
         {
-            bool success = false;
+            int add = -1;
             try
             {
                 int debit_account_id = int.Parse(debit_account_id_str),
                     credit_account_id = int.Parse(credit_account_id_str);
-                var add = conn.Insert(new JournalType()
+                JournalType type = new JournalType()
                 {
                     name = name,
                     prefix = prefix,
@@ -35,15 +48,16 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                     debit_account_id = debit_account_id,
                     credit_account_id = credit_account_id,
                     deleted = 0
-                });
-                success = true;
+                };
+                conn.Insert(type);
+                add = type.id;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                success = false;
+                add = -1;
             }
-            return success;
+            return add;
         }
 
         public List<JournalType> JournalTypeList()
@@ -61,6 +75,15 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             JournalType type = (from sub in conn.Table<JournalType>()
                                       where sub.id == id
                                       select sub
+                                  ).First<JournalType>();
+            return type;
+        }
+
+        public JournalType GetHavingPrefix(string prefix)
+        {
+            JournalType type = (from sub in conn.Table<JournalType>()
+                                where sub.prefix == prefix
+                                select sub
                                   ).First<JournalType>();
             return type;
         }

@@ -133,9 +133,6 @@
     <Compile Include="View\AccountSubtypeList.xaml.cs">
       <DependentUpon>AccountSubtypeList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AccountSubtypeView.xaml.cs">
-      <DependentUpon>AccountSubtypeView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\HomeFrame.xaml.cs">
       <DependentUpon>HomeFrame.xaml</DependentUpon>
     </Compile>
@@ -246,10 +243,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AccountSubtypeList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AccountSubtypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

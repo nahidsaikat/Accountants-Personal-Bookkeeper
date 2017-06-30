@@ -133,8 +133,8 @@ namespace Accountants_Personal_Bookkeeper.View
                 if (IsUnique(name, code))
                 {
                     // Insert in database as it is not already in database
-                    bool flag = viewModel.Add(name, code, typeString, subtypeString, parentString, openingBalance, openingDate, note);
-                    if (flag)
+                    int success = viewModel.Add(name, code, typeString, subtypeString, parentString, openingBalance, openingDate, note);
+                    if (success > 0)
                     {
                         NameTextBox.Text = string.Empty;
                         CodeTextBox.Text = string.Empty;
@@ -143,11 +143,16 @@ namespace Accountants_Personal_Bookkeeper.View
                         WarningTextBlock.Text = "Account added successfully.";
                         WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Green);
                     }
+                    else if(success == -2)
+                    {
+                        WarningTextBlock.Visibility = Visibility.Visible;
+                        WarningTextBlock.Text = "Journal creation problem!";
+                        WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                    }
                     else
                     {
-                        // something went wrong.
                         WarningTextBlock.Visibility = Visibility.Visible;
-                        WarningTextBlock.Text = "Something went Wrong.";
+                        WarningTextBlock.Text = "Something went wrong!";
                         WarningTextBlock.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
                     }
                 }
