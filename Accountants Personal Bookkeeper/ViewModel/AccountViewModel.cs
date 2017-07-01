@@ -107,13 +107,65 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
         {
             List<AccountLedger> ledgers = new List<AccountLedger>();
             int counter = 0;
-            foreach(Account account in AccountList())
+            bool asset = true, liability = true, expense = true, income = true, equity = true;
+            foreach (Account account in conn.Table<Account>().OrderBy(acc => acc.type))
             {
+                if (account.type == (int)AccountType.Assets && asset)
+                {
+                    ledgers.Add(new AccountLedger()
+                    {
+                        id = ++counter,
+                        account_id = -1,
+                        account_name = "ASSET ACCOUNTS"
+                    });
+                    asset = false;
+                }
+                else if (account.type == (int)AccountType.Liability && liability)
+                {
+                    ledgers.Add(new AccountLedger()
+                    {
+                        id = ++counter,
+                        account_id = -1,
+                        account_name = "LIABILITY ACCOUNTS"
+                    });
+                    liability = false;
+                }
+                else if (account.type == (int)AccountType.Expense && expense)
+                {
+                    ledgers.Add(new AccountLedger()
+                    {
+                        id = ++counter,
+                        account_id = -1,
+                        account_name = "EXPENSE ACCOUNTS"
+                    });
+                    expense = false;
+                }
+                else if (account.type == (int)AccountType.Income && income)
+                {
+                    ledgers.Add(new AccountLedger()
+                    {
+                        id = ++counter,
+                        account_id = -1,
+                        account_name = "INCOME ACCOUNTS"
+                    });
+                    income = false;
+                }
+                else if (account.type == (int)AccountType.Equity && equity)
+                {
+                    ledgers.Add(new AccountLedger()
+                    {
+                        id = ++counter,
+                        account_id = -1,
+                        account_name = "EQUITY ACCOUNTS"
+                    });
+                    equity = false;
+                }
+
                 ledgers.Add(new AccountLedger()
                 {
                     id = ++counter,
                     account_id = account.id,
-                    account_name = account.name,
+                    account_name = "    " + account.name,
                     balance = GetBalance(account.id)
                 });
             }

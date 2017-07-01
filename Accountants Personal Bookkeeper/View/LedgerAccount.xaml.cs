@@ -31,6 +31,29 @@ namespace Accountants_Personal_Bookkeeper.View
             conn = new Connection().GetConnection();
             viewModel = new AccountViewModel();
             ledgers = viewModel.AccountLedgerList();
+            LoadListView();
+        }
+
+        private void LoadListView()
+        {
+            foreach (AccountLedger ledger in ledgers)
+            {
+                StackPanel stackpanel = new StackPanel();
+                stackpanel.Name = ledger.account_id.ToString();
+                stackpanel.Orientation = Orientation.Horizontal;
+
+                TextBlock textblock = new TextBlock();
+                textblock.Text = ledger.account_name;
+                if (ledger.account_id != -1)
+                {
+                    textblock.Text += " # " + ledger.balance.ToString();
+                }
+                textblock.FontSize = 18;
+                textblock.Margin = new Thickness(5, 0, 0, 0);
+                stackpanel.Children.Add(textblock);
+
+                AccountLedgerListView.Items.Add(stackpanel);
+            }
         }
     }
 }
