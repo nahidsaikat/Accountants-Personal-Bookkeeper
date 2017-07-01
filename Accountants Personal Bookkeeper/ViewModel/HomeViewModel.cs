@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using Accountants_Personal_Bookkeeper.Model;
 using Accountants_Personal_Bookkeeper.View;
 using Accountants_Personal_Bookkeeper.DB;
@@ -150,7 +151,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                                         where jour.journal_date == today.Date
                                         select jour
                                         ).ToList<Journal>();
-            foreach(Journal journal in journals)
+            foreach (Journal journal in journals)
             {
                 amount += journal.amount;
             }
@@ -161,7 +162,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
 
             amount = 0.0;
             journals = (from jour in conn.Table<Journal>()
-                        where jour.journal_date == yesterday
+                        where jour.journal_date == yesterday.Date
                         select jour
                         ).ToList<Journal>();
             foreach (Journal journal in journals)

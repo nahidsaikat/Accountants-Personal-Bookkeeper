@@ -12,7 +12,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
             
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Center">
                 <Button x:Name="ButtonRefresh" Content="Refresh" Width="360" Background="DarkOrchid" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonRefresh_Click"/>
 
                 <Charting:Chart x:Name="LineChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" Height="330">
