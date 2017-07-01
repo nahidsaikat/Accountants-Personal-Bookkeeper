@@ -8,15 +8,15 @@ Environmental Requirement: Windows 10 Operating System with Anniversary Update f
 
 Features:
 
-      1.    Graphical home page,
-      2.    Chart of accounts,
-      3.    Account subtype,
-      4.    Journal subtype,
-      5.    Journal entry,
-      6.    Journal book,
-      7.    Ledger book,
-      8.    Party subtype,
-      9.    Party list
-      10.   Party ledger.
-      11.   Monthly statements,
-      12.   Graphical reports.
+      01.    Graphical home page,
+      02.    Chart of accounts,
+      03.    Account subtype,
+      04.    Journal subtype,
+      05.    Journal entry,
+      06.    Journal book,
+      07.    Ledger book,
+      08.    Party subtype,
+      09.    Party list,
+      10.    Party ledger,
+      11.    Monthly statements,
+      12.    Graphical reports.
