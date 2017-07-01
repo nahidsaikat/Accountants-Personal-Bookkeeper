@@ -35,5 +35,13 @@ namespace Accountants_Personal_Bookkeeper.View
             PartyAddFrame.Navigate(typeof(PartyAdd));
             PartySettingsFrame.Navigate(typeof(PartySettings));
         }
+
+        private void PartyPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PartyListFrame.Navigate(typeof(PartyList));
+            PartyLedgerFrame.Navigate(typeof(LedgerParty));
+            PartyAddFrame.Navigate(typeof(PartyAdd));
+            PartySettingsFrame.Navigate(typeof(PartySettings));
+        }
     }
 }

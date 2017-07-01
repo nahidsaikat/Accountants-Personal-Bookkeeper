@@ -5,9 +5,37 @@
     xmlns:local="using:Accountants_Personal_Bookkeeper.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     mc:Ignorable="d">
 
     <Grid Background="DarkKhaki">
-        <TextBlock Text="Home is the ultimate home."/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            
+            <StackPanel>
+                <Button x:Name="ButtonRefresh" Content="Refresh" Width="360" Background="DarkOrchid" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonRefresh_Click"/>
+
+                <Charting:Chart x:Name="LineChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" Height="330">
+                    <Charting:LineSeries Title="" IndependentValuePath="name" DependentValuePath="amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+            
+                <Charting:Chart x:Name="ColumnChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370" Height="330">
+                    <Charting:ColumnSeries Title="" IndependentValuePath="name" DependentValuePath="amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+
+                <Charting:Chart x:Name="PieChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370" Height="370">
+                    <Charting:PieSeries Margin="0" IndependentValuePath="name" DependentValuePath="amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+
+                <Charting:Chart x:Name="BarChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" Height="330">
+                    <Charting:BarSeries Title="" IndependentValuePath="name" DependentValuePath="amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+
+                <Charting:Chart x:Name="BubbleChart" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" Height="330">
+                    <Charting:BubbleSeries Title="" IndependentValuePath="name" DependentValuePath="amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+            </StackPanel>
+            
+        </ScrollViewer>
     </Grid>
 </Page>

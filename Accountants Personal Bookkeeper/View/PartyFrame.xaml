@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background = "DarkKhaki" >
-        <Pivot x:Name="PartyPivot">
+        <Pivot x:Name="PartyPivot" SelectionChanged="PartyPivot_SelectionChanged">
             <PivotItem Header = "List" >
                 <Frame Name="PartyListFrame" />
             </PivotItem>

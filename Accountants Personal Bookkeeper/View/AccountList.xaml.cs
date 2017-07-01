@@ -52,7 +52,7 @@ namespace Accountants_Personal_Bookkeeper.View
                 myButton.Name = account.id.ToString();
                 myButton.Content = "view";
                 myButton.Margin = new Thickness(10, 0, 0, 0);
-                myButton.Background = new SolidColorBrush(Windows.UI.Colors.OrangeRed);
+                myButton.Background = new SolidColorBrush(Windows.UI.Colors.LightSlateGray);
                 myButton.Tag = account.id;
                 myButton.Click += ViewAccountButton_Click;
                 if (account.id > 0)
