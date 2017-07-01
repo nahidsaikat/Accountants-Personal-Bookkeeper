@@ -50,6 +50,7 @@
                 Foreground="#FFFBF2E1" 
                 BorderBrush="Gray" 
                 BorderThickness="2,2,2,2"
+                Width="100"
                 Click="JournalTypeSaveButton_Click"
                 />
     </Grid>

@@ -31,7 +31,38 @@ namespace Accountants_Personal_Bookkeeper.View
             this.InitializeComponent();
             conn = new Connection().GetConnection();
             viewModel = new AccountViewModel();
-            accounts = viewModel.AccountList();
+            accounts = viewModel.AccountChart();
+            LoadListView();
+        }
+
+        private void LoadListView()
+        {
+            foreach(Account account in accounts)
+            {
+                StackPanel stackpanel = new StackPanel();
+                stackpanel.Name = account.id.ToString();
+                stackpanel.Orientation = Orientation.Horizontal;
+
+                TextBlock textblock = new TextBlock();
+                textblock.Text = account.name;
+                textblock.FontSize = 18;
+                stackpanel.Children.Add(textblock);
+
+                Button myButton = new Button();
+                myButton.Name = account.id.ToString();
+                myButton.Content = "view";
+                myButton.Margin = new Thickness(10, 0, 0, 0);
+                myButton.Background = new SolidColorBrush(Windows.UI.Colors.OrangeRed);
+                myButton.Tag = account.id;
+                myButton.Click += ViewAccountButton_Click;
+                if (account.id > 0)
+                {
+
+                    stackpanel.Children.Add(myButton);
+                }
+
+                AccountListView.Items.Add(stackpanel);
+            }
         }
 
         private void EditAccountButton_Click(object sender, RoutedEventArgs e)

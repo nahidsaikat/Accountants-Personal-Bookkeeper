@@ -27,28 +27,8 @@
                       VerticalScrollBarVisibility="Auto"
                       Grid.Row="1">
             <ListView Name="AccountListView"
-                      ItemsSource="{x:Bind accounts}"
                       Margin="10,20,10,0"
                       SelectionMode="Single">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="data:Account">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind name}" Style="{StaticResource TextBlockStyle}"/>
-                            <Button Name="ViewAccountButton"
-                                    Content="View"
-                                    Tag="{x:Bind id}"
-                                    Click="ViewAccountButton_Click"
-                                    Margin="10,0,0,0"
-                                    Foreground="WhiteSmoke"/>
-                            <Button x:Name="EditAccountButton" 
-                                    Content="Edit" 
-                                    Tag="{x:Bind id}"
-                                    Click="EditAccountButton_Click" 
-                                    Margin="5,0,0,0" 
-                                    Foreground="WhiteSmoke"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
     </Grid>

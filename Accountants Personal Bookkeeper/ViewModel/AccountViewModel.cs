@@ -129,5 +129,64 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             double balance = allLedgers.Sum(ledger => ledger.amount);
             return balance;
         }
+
+        public List<Account> AccountChart()
+        {
+            List<Account> accountNameList = new List<Account>();
+            bool asset = true, liability = true, expense = true, income = true, equity = true;
+            foreach (var account in conn.Table<Account>().OrderBy( acc => acc.type ))
+            {
+                if (account.type == (int)AccountType.Assets && asset)
+                {
+                    accountNameList.Add(new Account() {
+                        id = -1,
+                        name = "ASSET ACCOUNTS"
+                    });
+                    asset = false;
+                }
+                else if (account.type == (int)AccountType.Liability && liability)
+                {
+                    accountNameList.Add(new Account()
+                    {
+                        id = -1,
+                        name = "LIABILITY ACCOUNTS"
+                    });
+                    liability = false;
+                }
+                else if (account.type == (int)AccountType.Expense && expense)
+                {
+                    accountNameList.Add(new Account()
+                    {
+                        id = -1,
+                        name = "EXPENSE ACCOUNTS"
+                    });
+                    expense = false;
+                }
+                else if (account.type == (int)AccountType.Income && income)
+                {
+                    accountNameList.Add(new Account()
+                    {
+                        id = -1,
+                        name = "INCOME ACCOUNTS"
+                    });
+                    income = false;
+                }
+                else if (account.type == (int)AccountType.Equity && equity)
+                {
+                    accountNameList.Add(new Account()
+                    {
+                        id = -1,
+                        name = "EQUITY ACCOUNTS"
+                    });
+                    equity = false;
+                }
+
+                accountNameList.Add(new Account() {
+                    id = account.id,
+                    name = "    " + account.name
+                });
+            }
+            return accountNameList;
+        }
     }
 }
