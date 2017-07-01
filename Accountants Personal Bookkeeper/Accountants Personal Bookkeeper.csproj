@@ -148,6 +148,12 @@
     <Compile Include="View\JournalList.xaml.cs">
       <DependentUpon>JournalList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\JournalListLast.xaml.cs">
+      <DependentUpon>JournalListLast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\JournalListThis.xaml.cs">
+      <DependentUpon>JournalListThis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\JournalSettings.xaml.cs">
       <DependentUpon>JournalSettings.xaml</DependentUpon>
     </Compile>
@@ -262,6 +268,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\JournalList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JournalListLast.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JournalListThis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

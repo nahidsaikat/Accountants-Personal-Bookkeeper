@@ -20,18 +20,18 @@ using Accountants_Personal_Bookkeeper.ViewModel;
 
 namespace Accountants_Personal_Bookkeeper.View
 {
-    public sealed partial class JournalList : Page
+    public sealed partial class JournalListLast : Page
     {
         List<Journal> journals;
         SQLite.Net.SQLiteConnection conn;
         JournalViewModel viewModel;
 
-        public JournalList()
+        public JournalListLast()
         {
             this.InitializeComponent();
             conn = new Connection().GetConnection();
             viewModel = new JournalViewModel();
-            journals = viewModel.JournalList();
+            journals = viewModel.JournalListLastMonth();
         }
 
         private async void ViewJournalButton_Click(object sender, RoutedEventArgs e)

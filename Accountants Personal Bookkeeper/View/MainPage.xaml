@@ -19,14 +19,14 @@
                     RelativePanel.AlignLeftWithPanel="True" 
                     FontFamily="Segoe MDL2 Assets" 
                     Content="&#xE700;" 
-                    FontSize="20" 
+                    FontSize="22" 
                     FontWeight="Bold"
                     Foreground="White"
                     Click="HamburgerButton_Click" />
 
             <TextBlock Name="TitleTextBlock" 
                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       FontSize="20"
+                       FontSize="22"
                        FontStretch="SemiCondensed"
                        Foreground="White"
                        Margin="5, 0, 0, 0"

@@ -42,6 +42,7 @@ namespace Accountants_Personal_Bookkeeper.View
                 StackPanel stackpanel = new StackPanel();
                 stackpanel.Name = account.id.ToString();
                 stackpanel.Orientation = Orientation.Horizontal;
+                stackpanel.HorizontalAlignment = HorizontalAlignment.Center;
 
                 TextBlock textblock = new TextBlock();
                 textblock.Text = account.name;

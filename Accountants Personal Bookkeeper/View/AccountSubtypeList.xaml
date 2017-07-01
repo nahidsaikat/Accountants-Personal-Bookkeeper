@@ -31,7 +31,7 @@
                       Margin="10,20,10,0">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:AccountSubtype">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock Text="{x:Bind name}" Style="{StaticResource TextBlockStyle}"/>
                             <Button Name="ViewAccountSubtypeButton"
                                     Content="View"

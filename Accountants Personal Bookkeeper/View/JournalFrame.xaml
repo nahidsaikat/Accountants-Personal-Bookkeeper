@@ -9,7 +9,13 @@
 
     <Grid Background="DarkKhaki">
         <Pivot x:Name="JournalPivot" SelectionChanged="JournalPivot_SelectionChanged">
-            <PivotItem Header="List">
+            <PivotItem Header="This Month">
+                <Frame Name="JournalListThisFrame" />
+            </PivotItem>
+            <PivotItem Header="Last Month">
+                <Frame Name="JournalListLastFrame" />
+            </PivotItem>
+            <PivotItem Header="All">
                 <Frame Name="JournalListFrame" />
             </PivotItem>
             <PivotItem Header="Add">

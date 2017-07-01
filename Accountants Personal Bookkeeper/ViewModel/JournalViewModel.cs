@@ -122,6 +122,26 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             return journalList;
         }
 
+        public List<Journal> JournalListThisMonth()
+        {
+            List<Journal> journalList = new List<Journal>();
+            foreach (var journal in conn.Table<Journal>())
+            {
+                journalList.Add(journal);
+            }
+            return journalList;
+        }
+
+        public List<Journal> JournalListLastMonth()
+        {
+            List<Journal> journalList = new List<Journal>();
+            foreach (var journal in conn.Table<Journal>())
+            {
+                journalList.Add(journal);
+            }
+            return journalList;
+        }
+
         public Journal Get(int id)
         {
             Journal journal = (from jour in conn.Table<Journal>()

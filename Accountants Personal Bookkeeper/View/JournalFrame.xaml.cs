@@ -25,6 +25,8 @@ namespace Accountants_Personal_Bookkeeper.View
         public JournalFrame()
         {
             this.InitializeComponent();
+            JournalListThisFrame.Navigate(typeof(JournalListThis));
+            JournalListLastFrame.Navigate(typeof(JournalListLast));
             JournalListFrame.Navigate(typeof(JournalList));
             JournalAddFrame.Navigate(typeof(JournalAdd));
             JournalSettingsFrame.Navigate(typeof(JournalSettings));
@@ -32,7 +34,8 @@ namespace Accountants_Personal_Bookkeeper.View
 
         private void JournalPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            JournalListThisFrame.Navigate(typeof(JournalListThis));
+            JournalListLastFrame.Navigate(typeof(JournalListLast));
             JournalListFrame.Navigate(typeof(JournalList));
             JournalAddFrame.Navigate(typeof(JournalAdd));
             JournalSettingsFrame.Navigate(typeof(JournalSettings));
