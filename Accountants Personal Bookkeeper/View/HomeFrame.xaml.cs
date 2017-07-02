@@ -20,42 +20,18 @@ using Accountants_Personal_Bookkeeper.ViewModel;
 namespace Accountants_Personal_Bookkeeper.View
 {
 
-    public class FinancialStuff
-    {
-        public string Name { get; set; }
-        public int Amount { get; set; }
-    }
-
     public sealed partial class HomeFrame : Page
     {
-        HomeViewModel viewModel;
-
         public HomeFrame()
         {
             this.InitializeComponent();
-            viewModel = new HomeViewModel();
-            LoadChartContents();
+            ShowHomeFrame.Navigate(typeof(HomeChart));
         }
-
-        private void LoadChartContents()
+        
+        private void HomePivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Random rand = new Random();
-            List<FinancialStuff> financialStuffList = new List<FinancialStuff>();
-            financialStuffList.Add(new FinancialStuff() { Name = "MSFT", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new FinancialStuff() { Name = "AAPL", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new FinancialStuff() { Name = "GOOG", Amount = rand.Next(0, 200) });
-            financialStuffList.Add(new FinancialStuff() { Name = "BBRY", Amount = rand.Next(0, 200) });
 
-            (ColumnChart.Series[0] as ColumnSeries).ItemsSource = viewModel.GetAccounts();
-            (PieChart.Series[0] as PieSeries).ItemsSource = viewModel.GetAccountsByTypes();
-            (BarChart.Series[0] as BarSeries).ItemsSource = viewModel.GetAccountsSubtypeWise();
-            (LineChart.Series[0] as LineSeries).ItemsSource = viewModel.GetTransactions();
-            (BubbleChart.Series[0] as BubbleSeries).ItemsSource = viewModel.GetTransactionsTypeWise();
-        }
-
-        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            LoadChartContents();
+            ShowHomeFrame.Navigate(typeof(HomeChart));
         }
     }
 }
