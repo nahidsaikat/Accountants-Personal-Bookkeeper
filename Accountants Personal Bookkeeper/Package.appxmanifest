@@ -17,14 +17,14 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Accountants_Personal_Bookkeeper.App">
       <uap:VisualElements DisplayName="Accountants Personal Bookkeeper" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Accountants Personal Bookkeeper" BackgroundColor="transparent">
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png" />
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="AP Bookkeeper" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" ShortName="AP Bookkeeper">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="green" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="darkSlateGray" />
       </uap:VisualElements>
     </Application>
   </Applications>
