@@ -123,6 +123,7 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                 }
                 catch (Exception e)
                 {
+                    Debug.WriteLine(e.ToString());
                     subtype.Add(account.subtype, balance);
                 }
             }
@@ -147,11 +148,13 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
             DateTime seventhDate = DateTime.Today.AddDays(-7);
             DateTime thirtythDate = DateTime.Today.AddDays(-30);
 
+            //string query = string.Format("SELECT type, amount as total FROM Journal WHERE journal_date == datetime({0})", today);
+            //var journals = conn.Query<Val>(query).ToList<Val>();
             List<Journal> journals = (from jour in conn.Table<Journal>()
-                                        where jour.journal_date == today.Date
-                                        select jour
+                                      where jour.journal_date == today.Date
+                                      select jour
                                         ).ToList<Journal>();
-            foreach (Journal journal in journals)
+            foreach (var journal in journals)
             {
                 amount += journal.amount;
             }
@@ -165,7 +168,9 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                         where jour.journal_date == yesterday.Date
                         select jour
                         ).ToList<Journal>();
-            foreach (Journal journal in journals)
+            //query = string.Format("SELECT type, amount as total FROM Journal WHERE journal_date = {0}", yesterday.ToString());
+            //journals = conn.Query<Val>(query).ToList<Val>();
+            foreach (var journal in journals)
             {
                 amount += journal.amount;
             }
@@ -180,7 +185,9 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                         where jour.journal_date >= today.Date && jour.journal_date <= seventhDate.Date
                         select jour
                         ).ToList<Journal>();
-            foreach (Journal journal in journals)
+            //query = string.Format("SELECT type, amount as total FROM Journal WHERE journal_date => {0} AND journal_date <= {1}", seventhDate.ToString(), today.ToString());
+            //journals = conn.Query<Val>(query).ToList<Val>();
+            foreach (var journal in journals)
             {
                 amount += journal.amount;
             }
@@ -195,7 +202,9 @@ namespace Accountants_Personal_Bookkeeper.ViewModel
                         where jour.journal_date >= today.Date && jour.journal_date <= thirtythDate.Date
                         select jour
                         ).ToList<Journal>();
-            foreach (Journal journal in journals)
+            //query = string.Format("SELECT type, amount as total FROM Journal WHERE journal_date => {0} AND journal_date <= {1}", thirtythDate.ToString(), today.ToString());
+            //journals = conn.Query<Val>(query).ToList<Val>();
+            foreach (var journal in journals)
             {
                 amount += journal.amount;
             }
