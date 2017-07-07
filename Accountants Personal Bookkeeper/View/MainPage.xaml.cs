@@ -72,6 +72,8 @@ namespace Accountants_Personal_Bookkeeper
                 TitleTextBlock.Text = "Party";
             }
             else { }
+
+            MySplitView.IsPaneOpen = false;
         }
 
         private void SettingsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
