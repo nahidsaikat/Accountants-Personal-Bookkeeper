@@ -27,14 +27,14 @@ namespace Accountants_Personal_Bookkeeper.View
             this.InitializeComponent();
             AppSettingsFrame.Navigate(typeof(Settings));
             AboutFrame.Navigate(typeof(About));
-            RateUsFrame.Navigate(typeof(RateUs));
+            //RateUsFrame.Navigate(typeof(RateUs));
         }
 
         private void SettingsPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AppSettingsFrame.Navigate(typeof(Settings));
             AboutFrame.Navigate(typeof(About));
-            RateUsFrame.Navigate(typeof(RateUs));
+            //RateUsFrame.Navigate(typeof(RateUs));
         }
     }
 }

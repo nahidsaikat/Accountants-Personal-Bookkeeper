@@ -4,7 +4,6 @@
     xmlns:local="using:Accountants_Personal_Bookkeeper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Chart="using:Telerik.UI.Xaml.Controls.Chart"
     x:Class="Accountants_Personal_Bookkeeper.MainPage"
     xmlns:data ="using:Accountants_Personal_Bookkeeper.Model" 
     mc:Ignorable="d">
@@ -31,6 +30,15 @@
                        Foreground="White"
                        Margin="5, 0, 0, 0"
                        Text="Home"/>
+            
+            <Button Name="RateUsButton" 
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontWeight="Bold"
+                    Foreground="LightYellow"
+                    FontFamily="Segoe MDL2 Assets" 
+                    FontSize="22" 
+                    Content="&#xE76E;"
+                    Click="RateUsButton_Click" />
         </RelativePanel>
         
         <SplitView Name="MySplitView" 

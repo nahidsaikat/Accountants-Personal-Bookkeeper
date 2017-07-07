@@ -15,9 +15,9 @@
             <PivotItem Header="About" Name="AboutPivotItem">
                 <Frame Name="AboutFrame" />
             </PivotItem>
-            <PivotItem Header="Rate Us" Name="RateUsPivotItem">
+            <!--<PivotItem Header="Rate Us" Name="RateUsPivotItem">
                 <Frame Name="RateUsFrame" />
-            </PivotItem>
+            </PivotItem>-->
         </Pivot>
     </Grid>
 </Page>
